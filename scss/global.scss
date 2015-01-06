@@ -1,0 +1,85 @@
+@import 'mixins';
+@import 'variables';
+@import 'fonts';
+
+
+
+//placeholders 
+%clip {
+	position: absolute; 
+	overflow: hidden; 
+	clip: rect(0 0 0 0); 
+	height: 1px; width: 1px; 
+	margin: -1px; padding: 0; border: 0;
+}
+
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+//card tiles (Like Google Material Design)
+.cards {
+  background: $offwhite;
+  margin-bottom: 1rem;
+  width: 100%;
+  float:left;
+  padding: 2%;
+  max-width: $max-width;
+  -webkit-backface-visibility: hidden;
+}
+
+.no-padding {
+  padding: 0!important;
+}
+.no-margin-bottom {
+  margin-bottom: 0!important;
+}
+
+// Buttons
+.button {
+  height: auto; 
+  @include vendor-prefix(border-radius, 50px);
+  background: $nav; 
+  color: white;
+  padding: 2%;
+  border: solid 2px $light-blue;
+  cursor: pointer; 
+  color: $light-blue;
+  @include transition(all, .3s);
+  font-size: .75em;
+  @media screen and (min-width: 33.313em){
+    font-size: .9em;
+  }
+  @media screen and (min-width: 38.8125em){
+    font-size: 1em;
+  }
+  @media screen and (min-width: $bp-small){
+    font-size: 1.4em;
+  }
+  &:hover, &:active {
+    color: $links;
+    border: solid 2px $links;
+  }
+}
+
+.button-play {
+  position: absolute;
+  width: 66px; height: 66px;
+  margin: -33px 0 0 -33px;
+  top: 50%;
+  left: 50%;
+}
+
+.button-play-icon {
+  fill: $nav;
+  opacity: .9;
+  @include transition(fill, .3s);
+}
+
+.blogroll-img:hover .button-play-icon {
+  fill: $light-blue;
+}

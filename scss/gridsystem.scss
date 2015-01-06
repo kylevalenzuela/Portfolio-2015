@@ -1,0 +1,17 @@
+@import 'mixins';
+
+.grid-1 {
+	@include rowMachine(1, 1%);
+}
+
+.grid-2 {
+	@include rowMachine(2, 1%);
+}
+
+.grid-3 {
+	@include rowMachine(3, 1%);
+}
+
+.grid-4 {
+	@include rowMachine(4, 1%);
+}
