@@ -1,7 +1,8 @@
 <?php
 	// Add RSS links to <head> section
 	automatic_feed_links();
-	
+	include('keys.php');
+    
 	// Load jQuery
 	if ( !is_admin() ) {
         wp_deregister_script('jquery');
@@ -358,9 +359,8 @@
         require_once 'Pintlabs/Service/Untappd.php';
 
         $config = array(
-            'clientId'     => '4E37EE1CB41FEB8E5BC70855AD7248F2C6BEED61',
-            'clientSecret' => '6BF3B128296D628BD2680B15844F5B32DD3339CD',
-            'redirectUri'  => 'localhost:8888'
+            'clientId'     => $uci,
+            'clientSecret' => $ucs,
         );
         $untappd = new Pintlabs_Service_Untappd($config);
         
@@ -377,10 +377,10 @@
     
         require_once('TwitterAPIExchange.php');
         $settings = array(
-        'oauth_access_token' => "125596331-9VqLiu5sP6TJlmwgNZUnk76ZM0Kc55Us5wxNKZps",
-        'oauth_access_token_secret' => "RqSdZEtjJJF2hEmvIRLbTxir07cMH0I7mLDbkbmQ7Q65g",
-        'consumer_key' => "NS9frGsgzsfUx0ocKS6Q",
-        'consumer_secret' => "Yl5VZTWIxIWEW8rf9Xsu6w43tp5Bfw0Fjpn53MerVHI"
+        'oauth_access_token' => $tat,
+        'oauth_access_token_secret' => $ttc,
+        'consumer_key' => $tk,
+        'consumer_secret' => $tck
         );
         $url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
         $requestMethod = "GET";
@@ -402,14 +402,14 @@
 
     function insta_count() {
 
-        $value = file_get_contents('https://api.instagram.com/v1/users/3126305/?client_id=803227b47449444c9d8089a956becf6a');
+        $value = file_get_contents($iurl);
         $value = json_decode($value, true);
         $value = $value['data']['counts']['media'];
         echo $value;
     }
 
     function insta_latest_photo() {
-        $value = file_get_contents('https://api.instagram.com/v1/users/3126305/media/recent?client_id=803227b47449444c9d8089a956becf6a&count=1');
+        $value = file_get_contents($iurl);
         $value = json_decode($value, true);
         $img = $value['data']['images']['standard_resolution'];
         echo '<div class="untappd-img" style="background-image: url(' .  $img . ' )" />'; 
@@ -429,14 +429,14 @@
     
     function currently_reading_img(){ 
         
-        $fileContents = file_get_contents('https://www.goodreads.com/review/list?format=xml&v=2&id=10848992&shelf=currently-reading&key=VIocct0tqmm8WtIo5uysw');
+        $fileContents = file_get_contents($grurl);
         $simpleXml = simplexml_load_string($fileContents);
         echo '<img src="' . $simpleXml->reviews->review->book->image_url . '" >';
     }
 
     function currently_reading_text(){ 
 
-        $fileContents = file_get_contents('https://www.goodreads.com/review/list?format=xml&v=2&id=10848992&shelf=currently-reading&key=VIocct0tqmm8WtIo5uysw');
+        $fileContents = file_get_contents($grurl);
         $simpleXml = simplexml_load_string($fileContents);
         echo $simpleXml->reviews->review->book->title;
     }
