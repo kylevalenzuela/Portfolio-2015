@@ -50,7 +50,7 @@
 		</div>
 	</div>
 </div>
-<div class="cards">
+<div class="cards no-margin-bottom ">
 	<div class="about-data-wrap">
 		<div class="about-timeline" >
 			<h4 class="timeline-header">2018</h4>
@@ -75,6 +75,9 @@
 				</li>
 				<li class="timeline-content">
 					<h5>Trip to Prague</h5>
+					<div class="timeline-img">
+						<img src="http://localhost:8888/wp-content/uploads/2015/01/prague.jpg">
+					</div>
 					<div class="description">
 						Na Zdraví
 					</div>
@@ -119,13 +122,19 @@
 			<ul>
 				<li class="timeline-content">
 					<h5>Trip to Japan</h5>
-					<div class="description">
+					<div class="timeline-img">
+						<img src="http://localhost:8888/wp-content/uploads/2015/01/osaka2.jpg">
+					</div>
+					<div class="description" style="font-weight: bold;">
 						こんにちは
 					</div>
 					<time class="timeline-time">December 2012</time>
 				</li>
 				<li class="timeline-content">
 					<h5>Panasonic Avionics</h5>
+					<div class="timeline-img">
+						<img src="http://localhost:8888/wp-content/uploads/2015/01/PAClogo.jpg">
+					</div>
 					<div class="description">
 						UI Designer / Tester
 					</div>
@@ -134,9 +143,22 @@
 			</ul>
 		</div>
 	</div>
+	
+</div>
+<div class="cards no-padding no-margin-bottom ">
+	<div class="about-contact">
+		<div class="about-contact-overlay">
+			<div class="contact-header">
+				<h1>Have something to Say?</h1>
+				<h4>Contact me regarding anything.</h4>
+			</div>
+			<?php echo do_shortcode('[contact-form subject="Kylevalenzuela.com Inquiry" submit_button_text="Send"][contact-field label="Name" type="name" class="taco" placeholder="Name" required="1"/][contact-field label="Email" type="email" placeholder="Email" required="1"/][contact-field label="Lets Talk!"" type="textarea" placeholder="I have a question about...." required="1"/][/contact-form]'); ?>
 
-	<div class="single-divider"></div>
-	<?php get_footer(); ?>
+			
+		</div>
+
+		
+	</div>
 </div>
 
 	
