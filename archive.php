@@ -2,10 +2,12 @@
 
 <div class="blogroll cards">
 
-		<?php if (in_category(18) ) : ?>
 	
 			<?php /* If this is a category archive */ if (is_category()) { ?>
-				<h2 class="port-title"><?php single_cat_title(); ?> Category</h2>
+				<h2 class="port-title"><?php single_cat_title(); ?> </h2>
+
+			<?php /* If this is a daily archive */ } elseif (is_day()) { ?>
+			<h2 class="port-title"><?php single_cat_title(); ?> </h2>
 
 			<?php /* If this is a daily archive */ } elseif (is_day()) { ?>
 				<h2>Archive for <?php the_time('F jS, Y'); ?></h2>
@@ -26,21 +28,25 @@
 			
 		<?php while (have_posts() ) : the_post() ; ?>
 			
-				<div <?php post_class(); ?>>
+				<div <?php post_class(); ?> >
+				
+				<?php if (in_category('blog') ) : ?>
 
 					<?php archive_blogroll(); ?>
+
+				<?php else : ?>
+
+				<?php archive_portroll(); ?>
+				
+				<?php endif; ?>
 
 				</div>
 
 		<?php endwhile; ?>
 			
-	<?php else : ?>
 
-		<h2 class="port-title"><?php single_cat_title(); ?> Category</h2>
-		<?php while (have_posts() ) : the_post() ; ?>
-			<?php archive_portroll(); ?>
-		<?php endwhile; ?>
-	<?php endif; ?>
+		
+
 		
 	<div class="single-divider"></div>
 	<?php get_footer(); ?>
