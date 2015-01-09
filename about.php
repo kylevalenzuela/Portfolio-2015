@@ -140,7 +140,21 @@
 					</div>
 					<time class="timeline-time">February 2012</time>
 				</li>
+				
 			</ul>
+			<h4 class="timeline-header">2011</h4>
+			<ul>
+				<li class="timeline-content">
+						<h5>Artificial Ignorance Launch</h5>
+						<div class="timeline-img">
+							<img src="http://localhost:8888/wp-content/uploads/2015/01/AI.jpg">
+						</div>
+						<div class="description">
+							Webcomic about robots trying to understand their existence.
+						</div>
+						<time class="timeline-time">June 2011</time>
+				</li>
+			</ul>	
 		</div>
 	</div>
 	
@@ -154,7 +168,7 @@
 			</div>
 			<?php echo do_shortcode('[contact-form subject="Kylevalenzuela.com Inquiry" submit_button_text="Send"][contact-field label="Name" type="name" class="taco" placeholder="Name" required="1"/][contact-field label="Email" type="email" placeholder="Email" required="1"/][contact-field label="Lets Talk!"" type="textarea" placeholder="I have a question about...." required="1"/][/contact-form]'); ?>
 
-			
+
 		</div>
 
 		
