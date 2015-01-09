@@ -85,6 +85,7 @@ nav {
   width: 100%;
   background: $nav;
   display: none;
+  cursor: pointer;
   @include vendor-prefix(transform, translate3d(0, 0, 0));
   z-index: 99999;
   @media screen and (min-width: $bp-small) {
@@ -154,7 +155,7 @@ nav {
   }
 }
 
-.name {
+.name-header {
   position: fixed;
   width: 100%;
   text-align: center;
@@ -1137,11 +1138,12 @@ About Timeline
   padding: 2% 2% 2% 7%;
   position: relative;
   width: 100%;
-  background-image: -webkit-linear-gradient(left, $nav 0, $nav 3px, transparent 3px);
+  @include bg-gradient();
   float: left;
 
   @media screen and (min-width: $bp40){
-    background-image: -webkit-linear-gradient(left,transparent 0,transparent 49.59%,#246 47.6%,#246 50.9%,transparent 51%);
+    @include bg-gradient-bp();
+    
     float: left;
     padding: 0 11%;
   }
@@ -1164,6 +1166,7 @@ About Timeline
   margin: 0 auto;
   padding: 2% 0;
   border-radius: 10px;
+  margin-top: -.5em;
   @media screen and(min-width: $bp40){
     width: 80px;
     height: 80px;
@@ -1199,38 +1202,32 @@ About Timeline
 
   &:before {
     content: url(icons/bubble-point-down.svg);
-    position: relative;
-    left: -51%;
-    bottom: -5.2em;
+    position: absolute;
+    left: 3%;
+
+    @media screen and(min-width: $bp40){
+      content: url(icons/bubble-point.svg);
+      right: 11%;
+    }
   }
  
 
-  &:nth-child(even){
-    float: left;
-    margin-top: 0;
-    @media screen and (min-width: $bp-small){
-      &:before {
-        left: -53%;
-        bottom: -6.2em;
-      }
-    }
-  }
+  
   @media screen and (min-width: $bp40){
     @include rowMachine(2, 4%);
 
     &:nth-child(even){
       float: right;
       margin-top: 3em;
-    }
-    &:nth-child(odd) {
-      &:before {
-        content: url(icons/bubble-point.svg);
-        position: relative;
-        left: 54%;
-        bottom: 1.8em;
-}
+      &:before{
+        content: url(icons/bubble-point-down.svg);
+        left: 20%;
+        @media screen and (min-width: $bp-large){
+          left: 19%;
+        }
       }
-  }
+    }
+    
     &:nth-child(2n+1){
       clear:both;
     }
@@ -1256,7 +1253,132 @@ About Timeline
   text-decoration: italic;
   font-style: italic;
 }
- 
+
+/*
+About Contact Section
+ *********************/
+
+ .about-contact{
+  width: 100%; 
+  float: left;
+  background: url(http://localhost:8888/wp-content/uploads/2015/01/IMG_8891-e1420759038502.jpg) no-repeat;
+ }
+.about-contact-overlay {
+  float:left;
+  width: 100%;  
+  height: 100%;
+  background: rgba(0, 0, 0, .2);
+}
+.contact-header {
+  text-align: center;
+}
+
+ #contact-form-4{
+    width: 100%; 
+    float: left;
+    padding: .5em 2%;
+    position: relative;
+    display: block;
+ }
+
+.contact-form  {
+  width: 100%;
+  @media screen and (min-width: $bp40){
+    margin: 0 auto;
+    width: 50%;
+
+  }
+  & > div > label {
+    @include clip();
+  }
+}
+.name {
+  width: 100%;
+  font-size: 2em;
+  outline: 2px solid $nav-darken;
+  margin-bottom: 1em;
+  padding: 1%;
+  background: transparent;
+  border: none;
+  color: $light-blue;
+  background: $forms;
+  &:focus {
+    outline: 4px solid $light-blue;
+  }
+}
+
+.email {
+  width: 100%;
+  font-size: 2em;
+  margin-bottom: 1em;
+  outline: 2px solid $nav-darken;
+  background: transparent;
+  padding: 1%;
+  color: $light-blue;
+  border: none;
+  background: $forms;
+  &:focus {
+    outline: 4px solid $light-blue;
+  }
+}
+
+
+
+#contact-form-comment-g4{
+  font-size: 2em;
+  width: 100%;
+  margin-bottom: 1em;
+  outline: 2px solid $nav-darken;
+  padding: 1%;
+  height: 10em;
+  background: transparent;
+  color: $light-blue;
+  border: none;
+  background: $forms;
+
+  &:focus {
+    outline: 4px solid $light-blue;
+  }
+}
+
+.contact-submit{
+  margin: 0!important;
+  width: 100%;
+}
+.pushbutton-wide{
+  width: 100%;
+  font-size: 2em;
+  width: 100%;
+  margin-bottom: 1em;
+  outline: 2px solid $nav-darken;
+  padding: 1%;
+  background: $forms;
+  color: $links;
+  border: none;
+  cursor: pointer;
+  @include transition(all, .3s);
+  &:hover {
+    background: rgba(87, 152, 171, .8);
+    color: white;
+  }
+}
+
+::-webkit-input-placeholder {
+   color: $links;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: $links;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: $links;
+}
+
+:-ms-input-placeholder {  
+   color: $links;
+}
+
 //styles for [cb-wrap] shortcode
 .cb-wrap {
   color: $grey /1.5!important;
