@@ -50,7 +50,28 @@
 		</div>
 	</div>
 </div>
-<div class="cards no-margin-bottom ">
+<div class="cards no-margin-bottom no-padding">
+	<div class="about-about-main ">
+		<div class="about-left">
+			<h4>About Me</h4>
+			<p>
+				I'm Kyle Valenzuela, a user experience designer and front-end developer from Los Angeles, California. I'm a builder of products for the web, writer of <a href="http://bakingbrew.com/">beer bread</a>, and tinkerer of the Raspberry Pi. 
+			</p>
+			<p>
+				Although deeply embedded in the web, I have not given up on my dream of working to help humans reach the stars. The first time we went to the moon, design took a back seat to practicality. However, Mars will be another story. I want help design a future in space! 
+			</p>
+		</div>
+		<div class="about-right">
+			<h4>UX of Life</h4>
+			<p>
+				Communicating with information technology should be as easy as moving your index finger. I believe that every thought that goes into a project should have, not only the end user in mind, but also never have that user out of sight.
+			</p>
+			<p>
+				My skills include whatever is necessary to get the job done, whether it be CSS, Javascript, Angular JS, or simply a hamer and nail. 
+			</p>
+		</div>
+		<div class="mountains"></div>
+	</div>
 	<div class="about-data-wrap">
 		<div class="about-timeline" >
 			<h4 class="timeline-header">2018</h4>
@@ -155,6 +176,7 @@
 						<time class="timeline-time">June 2011</time>
 				</li>
 			</ul>	
+			<h4 class="timeline-header"><div class="about-resume"><a href="#">Click here for my <em>Resume</em></a></div></h4>
 		</div>
 	</div>
 	
