@@ -1132,6 +1132,8 @@ About Main About
   width: 100%;
   float: left;
   background: $light-blue;
+  position: relative;
+  overflow: hidden;
   p {
     color: $nav;
   }
@@ -1156,10 +1158,89 @@ About Main About
 .about-about-title{
   width: 100%;
   text-align: center;
+  z-index: 1000;
 }
+
+//cloud animations
+
+.cloud1 {
+  width: 100px;
+  position: absolute;
+  z-index: 999;
+  top: 12em;
+  left: -10em;
+  @include vendor-prefix(animation, cloud-right 10s linear infinite);
+  @include vendor-prefix(animation-delay, 4s);
+  @media screen and (min-width: $bp40){
+    width: 150px;
+    top: 8em;
+    @include vendor-prefix(animation, cloud-right 30s linear infinite);
+    @include vendor-prefix(animation-delay, 4s);
+  }
+  svg {
+    width: 100%!important;
+    height: auto;
+  }
+}
+.cloud2 {
+  width: 100px;
+  position: absolute;
+  z-index: 999;
+  top: 37em;
+  right: -10em;
+  @include vendor-prefix(animation, cloud-left 10s linear infinite);
+  @include vendor-prefix(animation-delay, 7s);
+  @media screen and (min-width: $bp40){
+    width: 150px;
+    top: 20em;
+    @include vendor-prefix(animation, cloud-left 35s linear infinite);
+    @include vendor-prefix(animation-delay, 7s);
+  }
+  svg {
+    width: 100%!important;
+    height: auto;
+  }
+}
+
+
+//cloud animation left to right
+@-moz-keyframes cloud-right {
+  from { left: -10em;}
+  to { left: 110%; }
+}
+
+@-webkit-keyframes cloud-right {
+  from { left: -10em;}
+  to { left: 110%; }
+}
+
+@keyframes cloud-right {
+  from { left: -10em;}
+  to { left: 110%; }
+}
+
+//cloud animation right to left
+
+@-moz-keyframes cloud-left {
+  from { right: -10em;}
+  to { right: 110%; }
+}
+
+@-webkit-keyframes cloud-left {
+  from { right: -10em;}
+  to { right: 110%; }
+}
+
+@keyframes cloud-left {
+  from { right: -10em;}
+  to { right: 110%; }
+}
+
 .about-left{
+  position: relative;
   width: 100%;
   padding: 2%;
+  z-index: 1000;
   @media screen and (min-width: $bp40){
     @include rowMachine(2, 0);
   }
@@ -1168,8 +1249,10 @@ About Main About
 
 
 .about-right{
+  position: relative;
   width: 100%; 
   padding: 2%;
+  z-index: 1000;
   @media screen and (min-width: $bp40){
     @include rowMachine(2, 0);
   }
@@ -1464,6 +1547,8 @@ About Contact Section
 :-ms-input-placeholder {  
    color: $links;
 }
+
+
 
 //styles for [cb-wrap] shortcode
 .cb-wrap {

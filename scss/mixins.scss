@@ -14,6 +14,18 @@ MIXINS
   -o-#{$name}: #{$argument};
   #{$name}: #{$argument};
 }
+@mixin bg-gradient(){
+  background-image: -webkit-linear-gradient(left, $nav 0, $nav 3px, transparent 3px);
+  background-image: -ms-linear-gradient(left, $nav 0, $nav 3px, transparent 3px); 
+  background-image: -moz-linear-gradient(left, $nav 0, $nav 3px, transparent 3px); 
+  background-image: linear-gradient(left, $nav 0, $nav 3px, transparent 3px); 
+}
+@mixin bg-gradient-bp{
+  background-image: -webkit-linear-gradient(left,transparent 0,transparent 49.59%,#246 47.6%,#246 50.9%,transparent 51%);
+  background-image: -ms-linear-gradient(left,transparent 0,transparent 49.59%,#246 47.6%,#246 50.9%,transparent 51%);
+  background-image: -moz-linear-gradient(left,transparent 0,transparent 49.59%,#246 47.6%,#246 50.9%,transparent 51%);
+  background-image: linear-gradient(left,transparent 0,transparent 49.59%,#246 47.6%,#246 50.9%,transparent 51%);
+}
 
 /*
 SIMPLE BLOCK GRID (from css-tricks.com)
@@ -87,6 +99,7 @@ GENERIC  TRANSITION
   height: 1px; width: 1px; 
   margin: -1px; padding: 0; border: 0;
 }
+
 @mixin clearfix() {
   &:after {
     content: "";
