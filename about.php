@@ -78,7 +78,7 @@
 
 	<div class="about-data-wrap">
 		<div class="about-timeline" >
-			<h4 class="timeline-header">2018</h4>
+			<h4 class="timeline-header">2020</h4>
 			<ul>
 				<li class="timeline-content">
 					<h5>NASA / SpaceX</h5>
@@ -187,17 +187,11 @@
 </div>
 <div class="cards no-padding no-margin-bottom ">
 	<div class="about-contact">
-		<div class="about-contact-overlay">
-			<div class="contact-header">
-				<h1>Have something to Say?</h1>
-				<h4>Contact me regarding anything.</h4>
-			</div>
-			<?php echo do_shortcode('[contact-form subject="Kylevalenzuela.com Inquiry" submit_button_text="Send"][contact-field label="Name" type="name" class="taco" placeholder="Name" required="1"/][contact-field label="Email" type="email" placeholder="Email" required="1"/][contact-field label="Lets Talk!"" type="textarea" placeholder="I have a question about...." required="1"/][/contact-form]'); ?>
-
-
+		<div class="contact-header">
+			<h1>Have something to Say?</h1>
+			<h4>Contact me regarding anything.</h4>
 		</div>
-
-		
+		<?php echo do_shortcode('[contact-form subject="Kylevalenzuela.com Inquiry" submit_button_text="Send"][contact-field label="Name" type="name" class="taco" placeholder="Name" required="1"/][contact-field label="Email" type="email" placeholder="Email" required="1"/][contact-field label="Lets Talk!"" type="textarea" placeholder="I have a question about...." required="1"/][/contact-form]'); ?>
 	</div>
 </div>
 
