@@ -50,8 +50,11 @@
 		</div>
 	</div>
 </div>
+
 <div class="cards no-margin-bottom no-padding">
 	<div class="about-about-main ">
+	<div class="cloud1"><?php include('icons/cloud.svg'); ?></div>
+	<div class="cloud2"><?php include('icons/cloud.svg'); ?></div>
 		<div class="about-left">
 			<h4>About Me</h4>
 			<p>
@@ -72,6 +75,7 @@
 		</div>
 		<div class="mountains"></div>
 	</div>
+
 	<div class="about-data-wrap">
 		<div class="about-timeline" >
 			<h4 class="timeline-header">2018</h4>
