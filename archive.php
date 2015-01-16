@@ -9,6 +9,9 @@
 			<?php /* If this is a daily archive */ } elseif (is_day()) { ?>
 			<h2 class="port-title"><?php single_cat_title(); ?> </h2>
 
+			<?php /* If this is a tag archive */ } elseif (is_tag()) { ?>
+			<h2 class="port-title"><?php single_tag_title(); ?> </h2>
+
 			<?php /* If this is a daily archive */ } elseif (is_day()) { ?>
 				<h2>Archive for <?php the_time('F jS, Y'); ?></h2>
 
@@ -30,13 +33,15 @@
 			
 				<div <?php post_class(); ?> >
 				
-				<?php if (in_category('blog') ) : ?>
+					<?php $categories = get_the_category(); ?>
 
-					<?php archive_blogroll(); ?>
-
+					<?php if ($categories[0]->cat_ID == 13 || $categories[0]->cat_ID == 14 || $categories[0]->cat_ID == 15 || $categories[0]->cat_ID == 16): ?>
+					
+					<?php archive_portroll(); ?>
+											
 				<?php else : ?>
+						<?php archive_blogroll(); ?>
 
-				<?php archive_portroll(); ?>
 				
 				<?php endif; ?>
 
