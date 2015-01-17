@@ -120,6 +120,15 @@ nav {
     }
   }
 }
+
+.touch nav {
+  @media screen and (min-width: $bp-small) {
+    width: 12.5em;
+    position: relative;
+    float: left;
+  }
+}
+
 .nav-selected  {
   background: $nav-highlight;
 }    
@@ -128,7 +137,7 @@ nav {
   position: relative;
   height: 4.3125em;
   width: 4.3125em;
-  background:url(http://kylevalenzuela.com/wp-content/uploads/2013/12/me1.png);
+  background:url(http://localhost:8888/wp-content/uploads/2015/01/me.png);
   background-size: 80% 80%;
   background-repeat:no-repeat;
   background-color: $nav;
@@ -153,6 +162,12 @@ nav {
     width: 3.5em;
     margin-bottom: -40px;
   }
+}
+
+.touch .header-logo {
+  height: 3.5em;
+  width: 3.5em;
+  margin-bottom: -40px;
 }
 
 .name-header {
@@ -288,7 +303,7 @@ nav {
       content:'\31';
     }
     li:nth-child(3) .icon-font:before {
-      content:'\77';
+      content:'x';
     }
     li:nth-child(4) .icon-font:before {
       content:'\68';
@@ -505,6 +520,18 @@ nav {
     @include vendor-prefix(transform, translate3d(0, 0, 0));
     -webkit-backface-visibility: hidden;
   }
+}
+
+.touch .page-wrap {
+  @media screen and (min-width:$bp-small){
+    position: fixed;
+    height: 100%;
+    width: 100% ;
+    top: 0;
+    left: 150px;
+    max-width: 100%;
+    padding-right: calc(150px + 2%);
+  } 
 }
 
 /*
@@ -896,10 +923,8 @@ Blogroll
 }
 
 .single-entry {
-  img {
-    display: block;
-    margin: 0 auto;
-  }
+  float: left;
+  width: 100%;
 }
 
 .single-cat-wrap {
@@ -1353,16 +1378,20 @@ About Timeline
   margin-top: 1em;
   background: $nav;
   color: $links;
+  position: relative;
+  z-index: 100;
 
 
   &:before {
     content: url(icons/bubble-point-down.svg);
     position: absolute;
-    left: 3%;
+    top: 2.3em;
+    left: -1.5em;
+    z-index: -100;
 
     @media screen and(min-width: $bp40){
-      content: url(icons/bubble-point.svg);
-      right: 11%;
+      @include clip();
+
     }
   }
  
@@ -1375,10 +1404,8 @@ About Timeline
       float: right;
       margin-top: 3em;
       &:before{
-        content: url(icons/bubble-point-down.svg);
-        left: 20%;
+        @include clip();
         @media screen and (min-width: $bp-large){
-          left: 19%;
         }
       }
     }
@@ -1416,9 +1443,15 @@ About Timeline
   a{
     text-decoration: none;
     color: white;
-  }
-  em {
-    color: $links;
+    @include transition(color, .4s);
+    &:hover {
+      color: $nav;
+      @media screen and (min-width:$bp40){
+        color: $light-blue;
+      }
+    }
+    @media screen and (min-width: $bp40){
+    }
   }
 }
 
@@ -1429,16 +1462,17 @@ About Contact Section
  .about-contact{
   width: 100%; 
   float: left;
-  background: url(http://localhost:8888/wp-content/uploads/2015/01/IMG_8891-e1420759038502.jpg) no-repeat;
+  background: url(http://localhost:8888/wp-content/uploads/2015/01/hs-2009-32-c-xlarge_web.jpg) no-repeat;
  }
-.about-contact-overlay {
-  float:left;
-  width: 100%;  
-  height: 100%;
-  background: rgba(0, 0, 0, .2);
-}
+
+
 .contact-header {
   text-align: center;
+  float: left;
+  width: 100%;
+  h4, h1 {
+    color: $nav;
+  }
 }
 
  #contact-form-4{
@@ -1463,7 +1497,6 @@ About Contact Section
 .name {
   width: 100%;
   font-size: 2em;
-  outline: 2px solid $nav-darken;
   margin-bottom: 1em;
   padding: 1%;
   background: transparent;
@@ -1479,7 +1512,6 @@ About Contact Section
   width: 100%;
   font-size: 2em;
   margin-bottom: 1em;
-  outline: 2px solid $nav-darken;
   background: transparent;
   padding: 1%;
   color: $light-blue;
@@ -1496,7 +1528,6 @@ About Contact Section
   font-size: 2em;
   width: 100%;
   margin-bottom: 1em;
-  outline: 2px solid $nav-darken;
   padding: 1%;
   height: 10em;
   background: transparent;
@@ -1519,7 +1550,6 @@ About Contact Section
   font-size: 2em;
   width: 100%;
   margin-bottom: 1em;
-  outline: 2px solid $nav-darken;
   padding: 1%;
   background: $forms;
   color: $links;
