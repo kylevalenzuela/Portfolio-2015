@@ -8,7 +8,7 @@ Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: responsive, portfolio, cool, blue, 
-*********** ********** ********** **********/
+*****************************************/
 
 @import 'mixins';
 @import 'variables';
@@ -34,6 +34,7 @@ body {
   font-family:'Amaranth', sans-serif;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing: grayscale;
+  counter-reset: item;  
 }
 
 div {
@@ -137,7 +138,7 @@ nav {
   position: relative;
   height: 4.3125em;
   width: 4.3125em;
-  background:url(http://localhost:8888/wp-content/uploads/2015/01/me.png);
+  background:url(images/kyle-logo.png);
   background-size: 80% 80%;
   background-repeat:no-repeat;
   background-color: $nav;
@@ -165,10 +166,12 @@ nav {
 }
 
 .touch .header-logo {
+  position: relative;
   height: 3.5em;
   width: 3.5em;
   margin-bottom: -40px;
 }
+
 
 .name-header {
   position: fixed;
@@ -196,6 +199,12 @@ nav {
     opacity: 1;
     overflow: visible;
   } 
+}
+
+.touch .name-header a {
+  margin-top: 50px;
+  opacity: 1;
+  overflow: visible;
 }
  /*************
   Mobile  Home Nav
@@ -262,6 +271,8 @@ nav {
   @extend %clip;
   top:0; 
 }  
+
+
 .main-nav {
   @media screen and (min-width: $bp-small){
     position: absolute;
@@ -338,9 +349,21 @@ nav {
       margin-left: 0;
       opacity: 1.0;
     }
+    .touch span {
+      margin-left: 0;
+      opacity: 1.0;
+    }
   }
 }
 
+.touch .main-nav span {
+  margin-left: 0;
+  opacity: 1.0;
+}
+.touch .ease {
+  margin-left: 0;
+  opacity: 1.0;
+}
 .icon-font{
   position: relative;
   font-family: 'icomoonregular';
@@ -353,11 +376,17 @@ nav {
 .micronav {
   position: fixed;
   top: 0; left: 0;
-  width: 100%; height: 2em;
+  width: 100%; height: 3em;
   background: $nav;
   z-index: 55555;
   padding-left: 5px;
+  @include vendor-prefix(transform, translate3d(0, 0, 0));
   @include transition(all, .3s);
+  svg {
+    width: 40px;
+    height: 40px;
+    @include vendor-prefix(transform, translate3d(0, 0, 0));  
+  }
   @media screen and (min-width: $bp-small){
     display:none;
   }
@@ -369,7 +398,6 @@ nav {
 }
 
 .weirdness {
-  padding-left: 200px!important;
 }
 
 .hamburger-menu {
@@ -383,10 +411,11 @@ nav {
 .name-micronav {
   position: fixed;
   top: 0;
-  margin: .4em 0% 2% 37%;
-  width: 30%;
+  margin: .85em 0% 2% 37%;
+  width: 100%;
   z-index: 80000;
-  @include transition(margin, .3s);
+  @include transition(margin, .42s);
+  @include vendor-prefix(transform, translate3d(0, 0, 0));
   a {
     color: $links;
     text-decoration: none;
@@ -404,22 +433,26 @@ nav {
   float: left;
   @include transition(left, .3s);
   z-index: 7000;
+  @include vendor-prefix(transform, translate3d(0, 0, 0));
 }
 .hamburger-container.toggler {
   left: 200px;
+  @include vendor-prefix(transform, translate3d(0, 0, 0));
 }
 
 .overlay {
   background: black; 
   opacity: 0;
   z-index: 88888;
-  @include transition(opacity, .3s)
+  @include transition(opacity, .3s);
+  @include vendor-prefix(box-shadow, -4px 0px 4px 0px rgba(50, 50, 50, 0.64));
 }
 .overlay.onbitch {
   position: fixed;
   width: 100%;
   height: 100%;
   opacity: .4;
+  @include vendor-prefix(transform, translate3d(0, 0, 0));
 }
 
 .mobile-menu {
@@ -430,6 +463,8 @@ nav {
   top:0;left:0;
   z-index: 100;
   padding-top: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   ul {
     position:relative;
@@ -485,10 +520,11 @@ nav {
   position: relative;
   height: 80px;
   width: 80px;
-  background:url(http://kylevalenzuela.com/wp-content/uploads/2013/12/me1.png);
+  background:url(images/kyle-logo.png);
   background-size:100% 100%;
   background-repeat:no-repeat;
   margin: -66px auto -40px;
+  overflow: hidden;
 }
 
 
@@ -572,7 +608,7 @@ Portfolio Loop
 .portfolio-item {
   position: relative;
   float: left;
-  @include vendor-prefix(transform, translateZ(0));
+  @include vendor-prefix(transform, translate3d(0, 0, 0));
   @include rowMachine(2, 2%);
   @media screen and (min-width: $bp-small) {
     @include rowMachine(3, 2%);
@@ -605,6 +641,7 @@ Portfolio Loop
     background: rgba(0, 0, 0, 0.0);
     @include vendor-prefix(transition, ease-in-out .3s);
     overflow: hidden;
+    @include vendor-prefix(transform, translate3d(0, 0, 0));
 
     h3 {
       position: absolute;
@@ -692,7 +729,7 @@ Portfolio Loop
   font-family: 'icomoonregular';
   color: $light-blue;
   font-size: 6em;
-  pointer: default;
+  cursor: default;
   @media screen and (min-width: $bp-small){
     font-size: 10em;
   }
@@ -701,6 +738,10 @@ Portfolio Loop
   @include vendor-prefix(animation, spin 2s linear infinite);
   @include vendor-prefix(transition, ease-in-out .4s);
 } 
+.dino404 {
+  color: $nav!important;
+  z-index: 1000;
+}
 
 .loading-text {
   font-family: 'Amaranth';
@@ -748,13 +789,15 @@ Blogroll
 
 .entryroll{
   display: block;
-  @include rowMachine(2, 2%); 
-
+  @include rowMachine(1, 2%); 
   float: left;
   margin-bottom: 1em;
   padding: 1%;
   &:last-child {
     border-bottom: none;
+  }
+  @media screen and (min-width: 400px){
+    @include rowMachine(2, 2%); 
   }
   @media screen and (min-width: $bp-small){
     @include rowMachine(3, 2%); 
@@ -1033,7 +1076,7 @@ Portfolio Page
   About  
   ******************/
 
-  .about-img-wrap {
+  .about-img-wrap, .touch .about-img-wrap {
     width: 100%; 
     float: left;
     overflow: hidden;
@@ -1044,7 +1087,7 @@ Portfolio Page
   }
 
 
-  .about-img {
+  .about-img, .touch .about-img{
     width: 100%;
     height: 100%;
     float: left;
@@ -1061,7 +1104,13 @@ Portfolio Page
       position: absolute;
       top: 0;
       right: 0;
-
+    }
+  }
+  .touch .about-badge-wrap {
+    @media screen and (min-width: 853px){
+      width: 100%;
+      float: left;
+      position: relative!important;
     }
   }
 
@@ -1070,6 +1119,7 @@ Portfolio Page
     float: left;
     padding: 2%;
     color: white;
+    transform: translate3d(0, 0, 0);
     @media screen and (min-width: 853px){
       height: 100%;
       margin-left: 260px;
@@ -1081,6 +1131,18 @@ Portfolio Page
       }
     }
   }
+  .touch .badge {
+    @media screen and (min-width: 853px){
+      width: 100%;
+      float: left;
+      padding: 2%;
+      position: relative;
+      color: white;
+      transform: translate3d(0, 0, 0);
+      margin-left: 0!important; 
+    }
+  }
+
   .badge-twitter {
     background: #00ACEE;
   }
@@ -1194,6 +1256,7 @@ About Main About
   z-index: 999;
   top: 12em;
   left: -10em;
+  @include vendor-prefix(transform, translate3d(0, 0, 0));
   @include vendor-prefix(animation, cloud-right 10s linear infinite);
   @include vendor-prefix(animation-delay, 4s);
   @media screen and (min-width: $bp40){
@@ -1214,6 +1277,7 @@ About Main About
   top: 37em;
   right: -10em;
   @include vendor-prefix(animation, cloud-left 10s linear infinite);
+  @include vendor-prefix(transform, translate3d(0, 0, 0));
   @include vendor-prefix(animation-delay, 7s);
   @media screen and (min-width: $bp40){
     width: 150px;
@@ -1287,10 +1351,10 @@ About Main About
 .mountains {
   width: 100%;
   float:left;
-  background-image: url(http://localhost:8888/wp-content/uploads/2015/01/mountains-sm.png);
+  background-image: url(images/mountains-sm.png);
   height: 100px;
   @media screen and (min-width: 500px){
-    background-image: url(http://localhost:8888/wp-content/uploads/2015/01/mountains.png);
+    background-image: url(images/mountains.png);
     height: 227px;
   }
 }
@@ -1402,7 +1466,7 @@ About Timeline
 
     &:nth-child(even){
       float: right;
-      margin-top: 3em;
+      margin-top: 5em;
       &:before{
         @include clip();
         @media screen and (min-width: $bp-large){
@@ -1462,16 +1526,15 @@ About Contact Section
  .about-contact{
   width: 100%; 
   float: left;
-  background: url(http://localhost:8888/wp-content/uploads/2015/01/hs-2009-32-c-xlarge_web.jpg) no-repeat;
+  background: url(images/gl2.jpg) no-repeat;
  }
 
 
 .contact-header {
   text-align: center;
-  float: left;
   width: 100%;
   h4, h1 {
-    color: $nav;
+    color: white;
   }
 }
 
@@ -1485,15 +1548,18 @@ About Contact Section
 
 .contact-form  {
   width: 100%;
+  font-family: 'Amaranth';
   @media screen and (min-width: $bp40){
     margin: 0 auto;
     width: 50%;
+    -webkit-appearance: none;
 
   }
   & > div > label {
     @include clip();
   }
 }
+
 .name {
   width: 100%;
   font-size: 2em;
@@ -1501,6 +1567,7 @@ About Contact Section
   padding: 1%;
   background: transparent;
   border: none;
+  font-family: 'Amaranth';
   color: $light-blue;
   background: $forms;
   &:focus {
@@ -1508,10 +1575,12 @@ About Contact Section
   }
 }
 
+
 .email {
   width: 100%;
   font-size: 2em;
   margin-bottom: 1em;
+  font-family: 'Amaranth';
   background: transparent;
   padding: 1%;
   color: $light-blue;
@@ -1524,7 +1593,7 @@ About Contact Section
 
 
 
-#contact-form-comment-g4{
+#contact-form-comment-g402{
   font-size: 2em;
   width: 100%;
   margin-bottom: 1em;
@@ -1534,6 +1603,7 @@ About Contact Section
   color: $light-blue;
   border: none;
   background: $forms;
+  font-family: 'Amaranth';
 
   &:focus {
     outline: 4px solid $light-blue;
@@ -1543,6 +1613,28 @@ About Contact Section
 .contact-submit{
   margin: 0!important;
   width: 100%;
+}
+
+#contact-form-402 {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  h3 {
+    text-align: center;
+    color: white;
+    a {
+      font-family: inherit;
+      color: $light-blue;
+    }
+  }
+ 
+  blockquote {
+    background: $forms;
+    padding: 2%;
+    text-align: center;
+    color: white;
+ 
+  }
 }
 
 .pushbutton-wide{
@@ -1555,6 +1647,7 @@ About Contact Section
   color: $links;
   border: none;
   cursor: pointer;
+  -webkit-appearance: none;
   @include transition(all, .3s);
   &:hover {
     background: rgba(87, 152, 171, .8);
@@ -1625,6 +1718,7 @@ About Contact Section
 .error {
   text-align: center;
   position: relative;
+  z-index: 1000;
 
   h1 {
     color: $nav;
@@ -1633,7 +1727,7 @@ About Contact Section
     font-family: 'Amaranth';
   }
   h4 {
-   color: $light-blue;
+   color: white;
    margin-top: 2rem;
    font-family: 'Amaranth';
   }
