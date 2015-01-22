@@ -14,9 +14,6 @@
         wp_register_script('picturefill' , get_bloginfo('template_directory') . "/js/picturefill.js");
         wp_enqueue_script('picturefill');
 
-        wp_register_script('nlform' , get_bloginfo('template_directory') . "/js/nlform.js");
-        wp_enqueue_script('nlform');
-
         wp_enqueue_style( 'kylevalenzuela-style', get_stylesheet_uri() );
         add_action( 'wp_enqueue_scripts', 'kylevalenzuela-style' );
 	}
@@ -233,20 +230,6 @@
     }
 
     function archive_blogroll() {
-        echo '<a href="'; 
-        the_permalink(); 
-        echo '"><div class="portfolio-item ">';
-        echo '<img src="';
-        the_field('p-img'); 
-        echo'" />';
-        echo '<span><h3>';
-        the_title(); 
-        echo '</h3><ul class="port-loop-cat">';
-        port_cat_loop();
-        echo '</ul></span></div></a>';
-    }
-    
-    function archive_portroll(){
         echo '<div class="entryroll"><div class="porfolio-cat-flex">';
         echo '<a href="';
         the_permalink();
@@ -271,6 +254,20 @@
         the_title();
         echo'</a></h5>';
         echo '</div></div>';
+    }
+    
+    function archive_portroll(){
+        echo '<a href="'; 
+        the_permalink(); 
+        echo '"><div class="portfolio-item ">';
+        echo '<img src="';
+        the_field('p-img'); 
+        echo'" />';
+        echo '<span><h3>';
+        the_title(); 
+        echo '</h3><ul class="port-loop-cat">';
+        port_cat_loop();
+        echo '</ul></span></div></a>';
     }
 
     //share buttons 
@@ -329,6 +326,20 @@
         the_tags('<div class="icon-tag"></div>', '  ', ' ');
         echo '</div>';
     }
+    function port_page(){
+        echo '<div class="single-title">';
+        the_title();
+        echo '</div>';
+        echo '<div class="single-category">';
+        the_category(' ');
+        echo '</div><div class="single-divider"></div>';
+        echo '<div class="single-entry">';
+        the_content();
+        echo '</div>';
+        echo '<div class="tags">';
+        the_tags('<div class="icon-tag"></div>', '  ', ' ');
+        echo '</div>';
+    }
 
     function single_page_meta() {
         echo '<div class="single-cat-wrap">';
@@ -356,8 +367,8 @@
         
         set_include_path(get_include_path() . PATH_SEPARATOR . '../library/');
         require_once 'Pintlabs/Service/Untappd.php';
-
-       
+        require 'settings.php';
+        
         $untappd = new Pintlabs_Service_Untappd($config);
         
         try {
@@ -375,7 +386,7 @@
     }
 
     function twitter_word_count() {
-    
+        require 'settings.php';
         require_once('TwitterAPIExchange.php');
         
         $url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
@@ -398,7 +409,7 @@
 
     function insta_count() {
 
-        $value = file_get_contents('');
+        $value = file_get_contents('https://api.instagram.com/v1/users/3126305/?client_id=803227b47449444c9d8089a956becf6a');
         $value = json_decode($value, true);
         $value = $value['data']['counts']['media'];
         if(isset($value)){
@@ -409,17 +420,6 @@
         }
     }
 
-    function insta_latest_photo() {
-        $value = file_get_contents('');
-        $value = json_decode($value, true);
-        $img = $value['data']['images']['standard_resolution'];
-        if(isset($value)){
-            echo '<div class="untappd-img" style="background-image: url(' .  $img . ' )" />'; 
-        }
-        else {
-            echo '<p>Oh noes! Could not connect to Instagram...</p>';
-        }
-    }
 
     function get_data($url) {
         $ch = curl_init();
@@ -434,8 +434,8 @@
     }
     
     function currently_reading_img(){ 
-        
-        $fileContents = file_get_contents('');
+        require 'settings.php';
+        $fileContents = file_get_contents($goodreads);
         $simpleXml = simplexml_load_string($fileContents);
         if (isset($fileContents)){
             echo '<img src="' . $simpleXml->reviews->review->book->image_url . '" >';
@@ -446,8 +446,8 @@
     }
 
     function currently_reading_text(){ 
-
-        $fileContents = file_get_contents('');
+        require 'settings.php';
+        $fileContents = file_get_contents($goodreads);
         $simpleXml = simplexml_load_string($fileContents);
         
         if (isset($fileContents)){
@@ -456,6 +456,9 @@
         else {
             echo '<p>Oh noes! Could not connect to Goodreads...</p>';
         }
+    }
+    function the_big_me(){
+        echo '<img src="' . get_bloginfo('template_directory') . '/images/me-bg.jpg" alt="">';
     }
 
 ?>
