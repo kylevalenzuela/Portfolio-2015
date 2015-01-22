@@ -408,8 +408,8 @@
     }
 
     function insta_count() {
-
-        $value = file_get_contents('https://api.instagram.com/v1/users/3126305/?client_id=803227b47449444c9d8089a956becf6a');
+        require 'settings.php';
+        $value = file_get_contents($instakey);
         $value = json_decode($value, true);
         $value = $value['data']['counts']['media'];
         if(isset($value)){
