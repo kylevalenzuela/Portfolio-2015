@@ -14,8 +14,6 @@
         wp_register_script('picturefill' , get_bloginfo('template_directory') . "/js/picturefill.js");
         wp_enqueue_script('picturefill');
 
-        wp_enqueue_style( 'kylevalenzuela-style', get_stylesheet_uri() );
-        add_action( 'wp_enqueue_scripts', 'kylevalenzuela-style' );
 	}
 	
 	// Clean up the <head>
@@ -200,16 +198,24 @@
         while ( $category_query->have_posts() ) : 
             $category_query->the_post(); 
 
-            echo '<div class="entryroll"><div class="porfolio-cat-flex">';
+            echo '<div class="entryroll">';
             echo '<a href="';
             the_permalink();
             echo '"><div class="blogroll-img">';
             echo '<picture>';
             echo '<source srcset="';
-            the_field('blogroll-img-2');
+            if (get_field('blogroll-img-2') ) {
+                the_field('blogroll-img-2');
+            } else {
+                echo get_bloginfo('template_directory') . '/images/defaultblog2.jpg';
+            }
             echo '" media="(min-width: 768px)">';
             echo '<img srcset="';
-            the_field('blogroll-img-1'); 
+            if (get_field('blogroll-img-1') ) {
+                the_field('blogroll-img-1'); 
+            } else {
+                echo get_bloginfo('template_directory') . '/images/defaultblog1.jpg';
+            }
             echo '" alt="">';
             video_icon();
             echo '</picture>';
@@ -223,7 +229,7 @@
             echo '" />';
             the_title();
             echo'</a></h5>';
-            echo '</div></div>';
+            echo '</div>';
 
         endwhile; 
         wp_reset_query();
@@ -458,7 +464,12 @@
         }
     }
     function the_big_me(){
-        echo '<img src="' . get_bloginfo('template_directory') . '/images/me-bg.jpg" alt="">';
+        echo '<picture>';
+        echo '<source srcset="'. get_bloginfo('template_directory') . '/images/me2.jpg"';
+        echo '" media="(min-width: 353px)">';
+        echo '<img srcset="' . get_bloginfo('template_directory') . '/images/me1.jpg"';
+        echo '" alt="">';
+        echo '</picture>';
     }
 
 ?>

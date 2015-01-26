@@ -6,17 +6,15 @@ $(document).ready(function() {
   //Ajax function. Add element and ajaxed content url
   var ajaxloader = function(element, myurl) {
     var overlay = $('.loading-overlay');
-    overlay.hide();
     element.click(function(){
       $.ajax({
         type: 'GET',
         url: myurl,
         success: function(resp) {
           $('#loop-flop').load(myurl);
-          overlay.hide();
         },
         beforeSend : function(){
-          overlay.show();
+          $('#loop-flop').empty().html('<div class="dino blue">1</div><div class="loading-text">Loading...</div>');
         },
         error: function() {
           $('.loading-container').html('<p>oh noes</p>');
@@ -30,10 +28,10 @@ $(document).ready(function() {
 
   //initialize ajax request
   var ajaxing = function(){
-    var designurl = 'http://localhost:8888/wp-content/themes/POP/loop-design.php',
-      developmenturl = 'http://localhost:8888/wp-content/themes/POP/loop-development.php',
-      illustrationurl = 'http://localhost:8888/wp-content/themes/POP/loop-illustration.php',
-      allurl = 'http://localhost:8888/wp-content/themes/POP/loop-all.php',
+    var designurl = 'http://kylevalenzuela.com/wp-content/themes/POP/loop-design.php',
+      developmenturl = 'http://kylevalenzuela.com/wp-content/themes/POP/loop-development.php',
+      illustrationurl = 'http://kylevalenzuela.com/wp-content/themes/POP/loop-illustration.php',
+      allurl = 'http://kylevalenzuela.com/wp-content/themes/POP/loop-all.php',
 
       loopdesign = $('#loop-design'),
       loopdevelopment = $('#loop-development'),
@@ -129,5 +127,3 @@ $(document).ready(function() {
   }();
   
 })(jQuery);
-
-

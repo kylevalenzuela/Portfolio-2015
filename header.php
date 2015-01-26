@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-	<title><?php is_home() ? bloginfo('description') : wp_title(''); ?> | <?php bloginfo('name'); ?></title>
+	<title><?php wp_title( '|', true, 'right' ); bloginfo('name');?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	
 	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
@@ -21,7 +21,7 @@
 	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
 	<meta name="msapplication-TileColor" content="#00a300">
 	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
-
+	<?php echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('template_directory') . '/style.css">'; ?>
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +32,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body >
+<body>
 	<?php 
 		wp_nav_menu(array(
 				'menu'=>'Main Nav Menu',
